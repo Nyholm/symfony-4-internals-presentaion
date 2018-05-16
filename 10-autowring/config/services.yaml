@@ -1,0 +1,44 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  App\:
+    resource: '../src/*'
+    exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+
+  App\Controller\:
+    resource: '../src/Controller'
+    public: true
+    tags: ['controller.service_arguments']
+
+  App\Security\:
+    resource: '../src/Security'
+    tags: ['security.voter']
+
+
+  # ---------------
+
+  cache:
+    alias: cache.filesystem
+
+  cache.void:
+    class: Cache\Adapter\Void\VoidCachePool
+
+  cache.filesystem:
+    class: Cache\Adapter\Filesystem\FilesystemCachePool
+
+  League\Flysystem\Filesystem:
+    arguments: ['@League\Flysystem\Adapter\Local']
+
+  League\Flysystem\Adapter\Local:
+    arguments: ['%kernel.project_dir%/var/cache/%kernel.environment%/fs']
+
+  App\Middleware\Cache:
+    arguments: ['@cache']
+    public: true
+
+  App\Middleware\SecurityVoters:
+    public: true
+    arguments:
+      - ['@App\Security\AdminVoter', '@App\Security\ImageVoter']
