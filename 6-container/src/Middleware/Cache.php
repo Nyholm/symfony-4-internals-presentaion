@@ -19,9 +19,9 @@ class Cache implements MiddlewareInterface
      */
     private $ttl;
 
-    public function __construct()
+    public function __construct(CacheItemPoolInterface $cache)
     {
-        $this->cache = new ApcuCachePool();
+        $this->cache = $cache;
         $this->ttl = 300;
     }
 
