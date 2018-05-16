@@ -5,6 +5,7 @@ in highlighting symfony features without mentioning symfony.
 
 ### TODO 
 
+* [x] 6. Container
 * [x] 7. Better regex for routing (SF4.1)
 * [x] 8. Security voters
 * [ ] 9. Templating
