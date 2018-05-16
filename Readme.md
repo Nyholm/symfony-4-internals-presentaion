@@ -5,8 +5,8 @@ in highlighting symfony features without mentioning symfony.
 
 ### TODO 
 
-* [ ] 7. Better regex for routing (SF4.1)
-* [ ] 8. Security voters
+* [x] 7. Better regex for routing (SF4.1)
+* [x] 8. Security voters
 * [ ] 9. Templating
 * [ ] 10. Autowiring
 * [ ] 11. Toolbar / DataCollecotrs
