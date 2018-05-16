@@ -11,3 +11,14 @@ in highlighting symfony features without mentioning symfony.
 * [x] 10. Autowiring
 * [x] 11. Toolbar / DataCollecotrs
 * [x] 12. Exception handler
+
+
+### After building of framework
+
+We still have some problems: 
+
+* Show toolbar when exception. => We need multiple "loops". Ei Symfony event dispatcher
+* Third party support => Bundles
+* Authentication (We only mentioned authorization)
+* CLI => Just a new (slightly different) event loop. 
+
