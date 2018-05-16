@@ -36,10 +36,10 @@ class Router implements MiddlewareInterface
             .')$}sD';
 
 
-        while (preg_match($regex, $uri, $matches)) {
+        if (preg_match($regex, $uri, $matches)) {
             $routes = array(
-                31 => array('App\\Controller\\ImageController::showAction'), array('id'),
-                44 => array('App\\Controller\\ImageController::deleteAction'), array('id'),
+                31 => array('App\\Controller\\ImageController::showAction', array('id')),
+                44 => array('App\\Controller\\ImageController::deleteAction', array('id')),
             );
 
             list($controller, $vars) = $routes[(int) $matches['MARK']];
