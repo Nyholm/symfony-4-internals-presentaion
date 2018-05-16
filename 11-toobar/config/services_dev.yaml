@@ -1,0 +1,7 @@
+services:
+  cache:
+    alias: cache.void
+
+  App\DataCollector\CacheDataCollector:
+    decorates: 'cache'
+    arguments: ['@App\DataCollector\CacheDataCollector.inner']
