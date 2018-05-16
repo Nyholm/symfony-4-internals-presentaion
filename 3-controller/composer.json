@@ -1,0 +1,17 @@
+{
+    "name": "tobias/3-controller",
+    "authors": [
+        {
+            "name": "Tobias Nyholm",
+            "email": "tobias.nyholm@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "nyholm/psr7": "^0.3.0"
+    }
+}

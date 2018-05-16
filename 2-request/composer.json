@@ -1,0 +1,12 @@
+{
+    "name": "tobias/2-request",
+    "authors": [
+        {
+            "name": "Tobias Nyholm",
+            "email": "tobias.nyholm@gmail.com"
+        }
+    ],
+    "require": {
+        "nyholm/psr7": "^0.3.0"
+    }
+}
