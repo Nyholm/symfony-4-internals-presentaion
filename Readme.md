@@ -10,4 +10,4 @@ in highlighting symfony features without mentioning symfony.
 * [ ] 9. Templating
 * [x] 10. Autowiring
 * [x] 11. Toolbar / DataCollecotrs
-* [ ] 12. Exception handler
+* [x] 12. Exception handler
