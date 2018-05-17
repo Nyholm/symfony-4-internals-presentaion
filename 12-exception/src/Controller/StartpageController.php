@@ -11,6 +11,6 @@ class StartpageController
 {
     public function run(RequestInterface $request)
     {
-        return new Response(200, [], 'Welcome to index!');
+        return new Response(200, [], 'Welcome to index! <br>'.date('Y-m-d H:i:s'));
     }
 }

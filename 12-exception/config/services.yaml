@@ -46,3 +46,7 @@ services:
     public: true
     arguments:
       - ['@App\Security\AdminVoter', '@App\Security\ImageVoter']
+
+  App\DataCollector\CacheDataCollector:
+    decorates: 'cache'
+    arguments: ['@App\DataCollector\CacheDataCollector.inner']
