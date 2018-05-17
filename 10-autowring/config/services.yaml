@@ -6,7 +6,7 @@ services:
 
   App\:
     resource: '../src/*'
-    exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+    exclude: '../src/{Entity,Tests,Kernel.php}'
 
   App\Controller\:
     resource: '../src/Controller'
