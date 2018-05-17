@@ -12,8 +12,8 @@ services:
     public: true
     tags: ['controller.service_arguments']
 
-  App\Security\:
-    resource: '../src/Security/*'
+  App\Security\Voter\:
+    resource: '../src/Security/Voter/*'
     tags: ['security.voter']
 
   App\Middleware\:

@@ -36,9 +36,10 @@ class Kernel
     {
         $this->boot();
 
+        $middlewares[] = $this->container->get('middleware.auth');
         $middlewares[] = $this->container->get('middleware.security');
         $middlewares[] = $this->container->get('middleware.cache');
-        $middlewares[] = new \App\Middleware\Router();
+        $middlewares[] = new \App\Middleware\Router($this->container);
 
         $runner = (new \Relay\RelayBuilder())->newInstance($middlewares);
 

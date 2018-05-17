@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\Middleware\Authentication;
 use App\Middleware\Cache;
 use App\Middleware\ExceptionHandler;
 use App\Middleware\SecurityVoters;
@@ -41,9 +42,10 @@ class Kernel
         $this->boot();
 
         $middlewares[] = $this->container->get(ExceptionHandler::class);
+        $middlewares[] = $this->container->get(Authentication::class);
         $middlewares[] = $this->container->get(SecurityVoters::class);
         $middlewares[] = $this->container->get(Cache::class);
-        $middlewares[] = new \App\Middleware\Router();
+        $middlewares[] = new \App\Middleware\Router($this->container);
         $middlewares[] = $this->container->get(Toolbar::class);
 
         $runner = (new \Relay\RelayBuilder())->newInstance($middlewares);

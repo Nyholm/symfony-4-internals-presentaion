@@ -2,22 +2,28 @@
 
 declare(strict_types=1);
 
-namespace App\Security;
+namespace App\Security\Voter;
 
-use Nyholm\Psr7\Response;
+use App\Security\TokenStorage;
 use Psr\Http\Message\ServerRequestInterface;
 
 class AdminVoter implements VoterInterface
 {
+    private $tokenStorage;
+
+    public function __construct(TokenStorage$tokenStorage)
+    {
+        $this->tokenStorage = $tokenStorage;
+    }
+
     public function vote(ServerRequestInterface $request)
     {
         $uri = $request->getUri()->getPath();
-        $ip = $request->getServerParams()['REMOTE_ADDR'];
+        $token = $this->tokenStorage->getLastToken();
 
-        if ($ip !== '127.0.0.s1' && $uri === '/admin') {
+        if ($token['username'] !== 'Tobias' && $uri === '/admin') {
             return VoterInterface::ACCESS_DENIED;
         }
-
 
         return VoterInterface::ACCESS_ABSTAIN;
     }

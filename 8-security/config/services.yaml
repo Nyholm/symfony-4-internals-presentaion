@@ -22,17 +22,31 @@ services:
     arguments: ['@cache']
     public: true
 
+  middleware.auth:
+    class: App\Middleware\Authentication
+    arguments: ['@security.token_storage']
+    public: true
+
   middleware.security:
     class: App\Middleware\SecurityVoters
     public: true
     arguments:
       - ['@security.voter.admin', '@security.voter.image']
 
+  security.token_storage:
+    class: App\Security\TokenStorage
+
   security.voter.admin:
-    class: App\Security\AdminVoter
+    class: App\Security\Voter\AdminVoter
+    arguments: ['@security.token_storage']
 
   security.voter.image:
-    class: App\Security\ImageVoter
+    class: App\Security\Voter\ImageVoter
+
+  controller.admin:
+    class: App\Controller\AdminController
+    arguments: ['@security.token_storage']
+    public: true
 
   controller.startpage:
     class: App\Controller\StartpageController

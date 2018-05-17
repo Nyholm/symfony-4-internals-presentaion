@@ -2,7 +2,7 @@
 
 namespace App\Middleware;
 
-use App\Security\VoterInterface;
+use App\Security\Voter\VoterInterface;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
