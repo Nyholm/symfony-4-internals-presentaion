@@ -14,7 +14,7 @@ class AdminVoter implements VoterInterface
         $uri = $request->getUri()->getPath();
         $ip = $request->getServerParams()['REMOTE_ADDR'];
 
-        if ($ip !== '127.0.0.1' && $uri === '/admin') {
+        if ($ip !== '127.0.0.s1' && $uri === '/admin') {
             return VoterInterface::ACCESS_DENIED;
         }
 
