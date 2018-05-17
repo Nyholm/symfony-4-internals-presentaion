@@ -46,10 +46,7 @@ class Kernel
 
     public function boot()
     {
-        if ($this->booted) {
-            return;
-        }
-
+        if ($this->booted) { return; }
         $containerDumpFile = $this->getProjectDir().'/var/cache/'.$this->environment.'/container.php';
         if (!$this->debug && file_exists($containerDumpFile)) {
             require_once $containerDumpFile;
@@ -58,14 +55,12 @@ class Kernel
             $container = new ContainerBuilder();
             $container->setParameter('kernel.project_dir', $this->getProjectDir());
             $container->setParameter('kernel.environment', $this->environment);
-
             $loader = new YamlFileLoader($container, new FileLocator($this->getProjectDir().'/config'));
             try {
                 $loader->load('services.yaml');
                 $loader->load('services_'.$this->environment.'.yaml');
             } catch (FileLocatorFileNotFoundException $e) {
             }
-
             $container->compile();
 
             //dump the container

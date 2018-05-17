@@ -4,19 +4,15 @@ namespace App\Middleware;
 
 use Cache\Adapter\Apcu\ApcuCachePool;
 use Psr\Cache\CacheItemPoolInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class Cache implements MiddlewareInterface
 {
-    /**
-     * @var CacheItemPoolInterface
-     */
+    /*** @var CacheItemPoolInterface */
     private $cache;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     private $ttl;
 
     public function __construct()
@@ -25,7 +21,7 @@ class Cache implements MiddlewareInterface
         $this->ttl = 300;
     }
 
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
+    public function __invoke(Request $request, Response $response, callable $next)
     {
         $uri = $request->getUri();
         $cacheKey = 'url'.sha1($uri->getPath().'?'.$uri->getQuery());
