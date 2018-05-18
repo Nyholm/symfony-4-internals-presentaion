@@ -18,6 +18,7 @@ services:
 
   App\Middleware\:
     resource: '../src/Middleware/*'
+    exclude: '../src/Middleware/{Router.php}'
     public: true
 
 
@@ -45,7 +46,7 @@ services:
   App\Middleware\SecurityVoters:
     public: true
     arguments:
-      - ['@App\Security\AdminVoter', '@App\Security\ImageVoter']
+      - ['@App\Security\Voter\AdminVoter', '@App\Security\Voter\ImageVoter']
 
   App\DataCollector\CacheDataCollector:
     decorates: 'cache'
