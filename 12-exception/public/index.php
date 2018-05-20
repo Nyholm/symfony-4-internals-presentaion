@@ -15,6 +15,32 @@ emitHeaders($response);
 emitStatusLine($response);
 echo $response->getBody();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function emitStatusLine(\Psr\Http\Message\ResponseInterface $response)
 {
     $reasonPhrase = $response->getReasonPhrase();
